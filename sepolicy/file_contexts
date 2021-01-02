@@ -1,5 +1,5 @@
 # Gatekeeper
-/system/vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software           u:object_r:hal_gatekeeper_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software           u:object_r:hal_gatekeeper_default_exec:s0
 
 # Lights
 /sys/devices/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/leds(/.*)?                    u:object_r:sysfs_leds:s0
@@ -15,7 +15,13 @@
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oppo_msm8974    u:object_r:hal_lineage_touch_default_exec:s0
 
 # Binaries
-/(vendor|system/vendor)/bin/timekeep                                                u:object_r:timekeep_exec:s0
+#/(vendor|system/vendor)/bin/timekeep                                                u:object_r:timekeep_exec:s0
 
 # Device nodes
 /dev/stune(/.*)?                                                                    u:object_r:cgroup:s0
+
+# Firmware
+/firmware(/.*)?                                                                     u:object_r:firmware_file:s0
+
+# Persist
+/persist(/.*)?                                                                      u:object_r:mnt_vendor_file:s0
