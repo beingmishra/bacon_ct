@@ -73,7 +73,6 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BUILD_BROKEN_DUP_RULES := true
 
 # Camera
-TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=23
 
@@ -82,12 +81,6 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(PLATFORM_PATH)/charger/images
 
 # Dexpreopt
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 WITH_DEXPREOPT_DEBUG_INFO := false
 
 # Encryption
@@ -140,14 +133,6 @@ BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libril-qc-qmi-1.so|libaudioclient_shim.so
-
-# TWRP
-ifeq ($(WITH_TWRP),true)
-TARGET_RECOVERY_DEVICE_DIRS += $(PLATFORM_PATH)/twrp
-TW_INCLUDE_CRYPTO := true
-TW_CRYPTO_USE_SBIN_VOLD := true
-TW_THEME := portrait_hdpi
-endif
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
